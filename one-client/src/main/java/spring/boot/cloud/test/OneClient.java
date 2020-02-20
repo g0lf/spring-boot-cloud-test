@@ -59,5 +59,13 @@ public class OneClient {
         return bookList.stream().filter(b -> b.getId().equals(bookId)).findFirst().orElse(null);
     }
 
+    @GetMapping("/getAuthor/{bookId}")
+    public String findBookAuthor(@PathVariable Long bookId) {
+        Book book =  bookList.stream().filter(b -> b.getId().equals(bookId)).findFirst().orElse(null);
+        if (book != null){
+            return book.getAuthor();
+        }
+        return null;
+    }
 
 }
